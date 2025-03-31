@@ -1,54 +1,62 @@
-# React + TypeScript + Vite
+# Vite React Chrome Extension Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal and optimized setup for building Chrome extensions with React, TypeScript, and Vite. This template includes hot reloading for a smooth development experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡️ **Vite** - Super fast development & build tooling
+- ⚛️ **React** - Modern UI development with React 19
+- 🔄 **Hot Reloading** - See your changes instantly without manually refreshing
+- 🧰 **TypeScript** - Type safety and improved developer experience
+- 🎨 **TailwindCSS** - Utility-first CSS framework for rapid UI development
+- 🧹 **ESLint** - Code quality and best practices
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clone this repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server with hot reloading:
+   ```bash
+   npm run dev
+   ```
+4. Load the extension in Chrome:
+   - Open Chrome and navigate to `chrome://extensions/`
+   - Enable "Developer mode"
+   - Click "Load unpacked" and select the `build` folder from this project
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+The extension will automatically reload when you make changes to the code.
+
+## Building for Production
+
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This will create a production-ready build in the `build` directory.
+
+## Project Structure
+
+- `public/` - Static assets and manifest.json
+- `src/` - React application source code
+- `vite.config.ts` - Vite configuration with Chrome extension setup
+- `tailwind.config.js` - TailwindCSS configuration
+
+## Customization
+
+To customize the extension, edit the following files:
+
+- `public/manifest.json` - Extension metadata and permissions
+- `index.html` - HTML template for the extension popup
+- `src/` - React components and application logic
+
+## ESLint Configuration
+
+This template includes a basic ESLint configuration. For more advanced linting:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+// Add your custom ESLint rules here
 ```
